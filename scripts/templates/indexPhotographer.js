@@ -1,22 +1,21 @@
-export const photographerTemplate = (data) => {
-    data.portrait = `assets/photographers/personal-pictures/${data.portrait}`;
-    const {name, portrait} = data;
+export const photographerTemplate = (photographer) => {
+    photographer.portrait = `assets/photographers/personal-pictures/${photographer.portrait}`;
+    const {name, portrait} = photographer;
 
     function getUserCardDOM() {
         const html = `
                             <article >
-                            <a href="./photographer.html?id=${data.id}">
-                                <img src="${data.portrait}" alt="view ${data.name} profile">
-                                <h2>${data.name}</h2>
+                            <a href="./photographer.html?id=${photographer.id}">
+                                <img src="${photographer.portrait}" alt="view ${photographer.name} profile">
+                                <h2>${photographer.name}</h2>
                             </a>
                             <div class="text">
-                            <h3>${data.city}, ${data.country}</h3>
-                            <p>${data.tagline}</p>
-                            <span>${data.price}€/jour</span>
+                            <h3>${photographer.city}, ${photographer.country}</h3>
+                            <p>${photographer.tagline}</p>
+                            <span>${photographer.price}€/jour</span>
                              </div>
                             </article>
                             `
-        console.log(html)
         //add the HTML content
         return document.querySelector('.photographer_section').innerHTML += html;
     }

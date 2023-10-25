@@ -10,13 +10,13 @@ const  displayData = async (photographers) => {
     });
 }
 
-const init = async ()=> {
+const initIndex = async ()=> {
     const jsonPhotographers = await getPhotographers();
     console.log(jsonPhotographers)
     await displayData(jsonPhotographers);
 }
 
 //call at loading page
-init();
+initIndex();
 
     

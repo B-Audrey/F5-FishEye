@@ -6,6 +6,29 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & h1 {
+        font-size: 64px;
+        color: #D3573C;
+        margin: 0;
+    }
+    & h2 {
+        color: #901C1C;
+        font-size: 1.5em;
+        margin: 0;
+    }
+    & p {
+        color: #525252;
+
+    }
+    & img {
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+        object-fit: cover;
+    }
 }
 
 .contact_button {

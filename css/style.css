@@ -5,6 +5,9 @@ body {
     margin: 0;
 }
 
+p, span, h1, h2, h3, h4 {
+    font-weight: lighter;
+}
 
 header {
     display: flex;
@@ -17,6 +20,7 @@ header {
 h1 {
     color: #901C1C;
     margin-right: 100px;
+
 }
 
 .logo {
@@ -67,17 +71,19 @@ h1 {
     & h3 {
         color: #901C1C;
         margin: 0.5em 0;
-        font-size: 1em;
+
     }
 
     & p {
         margin: 2px 0;
-        font-size: 0.8em;
+
+
     }
 
     & span {
         color: #757575;
         font-size: 0.7em;
+
 
     }
 }
