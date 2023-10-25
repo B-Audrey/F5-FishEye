@@ -5,8 +5,8 @@ export const photographerTemplate = (data) => {
     function getUserCardDOM() {
         const html = `
                             <article >
-                            <a href="./photographer.html?id=${data.id}" aria-description="${data.name}">
-                                <img src="${data.portrait}" alt="${data.name} profile">
+                            <a href="./photographer.html?id=${data.id}">
+                                <img src="${data.portrait}" alt="view ${data.name} profile">
                                 <h2>${data.name}</h2>
                             </a>
                             <div class="text">
