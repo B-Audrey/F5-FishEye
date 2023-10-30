@@ -2,7 +2,7 @@ export const photographerTemplate = (photographer) => {
     photographer.portrait = `assets/photographers/personal-pictures/${photographer.portrait}`;
     const {name, portrait} = photographer;
 
-    function getUserCardDOM() {
+    function displayUserCardDOM() {
         const html = `
                             <article >
                             <a href="./photographer.html?id=${photographer.id}">
@@ -19,5 +19,5 @@ export const photographerTemplate = (photographer) => {
         //add the HTML content
         return document.querySelector('.photographer_section').innerHTML += html;
     }
-    return {name, portrait, getUserCardDOM}
+    return {name, portrait, displayUserCardDOM: displayUserCardDOM}
 }

@@ -1,5 +1,5 @@
 export const photographerPresentation = (photographer) => {
-    photographer.portrait = `assets/photographers/personal-pictures/${photographer.portrait}`;
+    photographer.portrait = `./assets/photographers/personal-pictures/${photographer.portrait}`;
     const html = `
                         <div>
                             <h1>${photographer.name}</h1>

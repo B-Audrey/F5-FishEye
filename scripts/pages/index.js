@@ -6,7 +6,7 @@ const  displayData = async (photographers) => {
         //creates element with its Dom method
         const photographerModel = photographerTemplate(photographer);
         //applies the DOM method to display elements
-        photographerModel.getUserCardDOM();
+        photographerModel.displayUserCardDOM();
     });
 }
 
