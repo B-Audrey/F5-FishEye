@@ -12,7 +12,6 @@ const  displayData = async (photographers) => {
 
 const initIndex = async ()=> {
     const jsonPhotographers = await getPhotographers();
-    console.log(jsonPhotographers)
     await displayData(jsonPhotographers);
 }
 

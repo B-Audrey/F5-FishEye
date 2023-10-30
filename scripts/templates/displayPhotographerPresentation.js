@@ -1,4 +1,4 @@
-export const photographerPresentation = (photographer) => {
+export const displayPhotographerPresentation = (photographer) => {
     photographer.portrait = `./assets/photographers/personal-pictures/${photographer.portrait}`;
     const html = `
                         <div>

@@ -155,3 +155,50 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+
+
+.modalBackground{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.navModalButtons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+.modalBackground button{
+    font-size: 4em;
+    color: #901C1C;
+    border: none;
+    background-color: transparent;
+}
+
+.modalBackground button:focus{
+    border: 1px solid black;
+}
+
+.closeModalButton {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.zoomDisplay img, .zoomDisplay video{
+    max-width : 80vw;
+    max-height: 80vh;
+    object-fit: cover;
+}
+.zoomDisplay p {
+    color: #901C1C ;
+    font-weight: 400;
+}

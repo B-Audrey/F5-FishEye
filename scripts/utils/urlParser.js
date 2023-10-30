@@ -7,6 +7,5 @@ export const urlParser = () => {
     }
     //parse data as needed
     outputParams.id ? outputParams.id = +outputParams.id : null; //if id is in params parse, else, null
-    console.log(outputParams)
     return outputParams
 }

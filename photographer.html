@@ -27,6 +27,16 @@
         </div>
         <div class="photograph-gallery">
         </div>
+        <aside class="modalBackground" style="display: none;" aria-hidden="true">
+                <button type="button" class="closeModalButton"> x </button>
+                <div class="navModalButtons">
+                    <button id="previousModalButton" aria-label="Previous picture"> < </button>
+                    <div class="zoomDisplay">
+                        <!--fill in with JS file-->
+                    </div>
+                    <button id="nextModalButton" aria-label="Next picture"> > </button>
+                </div>
+        </aside>
     </section>
 </main>
 <div id="contact_modal">
@@ -45,11 +55,16 @@
     </div>
 </div>
 </body>
+<!--main script-->
+<script src="/scripts/pages/photographer.js" type="module"></script>
 <script src="https://kit.fontawesome.com/4c168a5617.js" crossorigin="anonymous"></script>
+<!--utils-->
 <script src="/scripts/utils/functions.js" type="module"></script>
 <script src="/scripts/utils/urlParser.js" type="module"></script>
 <script src="/scripts/utils/contactForm.js" type="module"></script>
+<script src="/scripts/utils/modalNavigator.js" type="module"></script>
+<!--templates-->
 <script src="/scripts/templates/photographerFactoryForGallery.js" type="module"></script>
-<script src="/scripts/templates/photographerPresentation.js" type="module" ></script>
-<script src="/scripts/pages/photographer.js" type="module"></script>
+<script src="/scripts/templates/displayPhotographerPresentation.js" type="module" ></script>
+<script src="/scripts/templates/photographerFactoryForModal.js" type="module"></script>
 </html>
