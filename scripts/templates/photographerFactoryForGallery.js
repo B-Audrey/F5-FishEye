@@ -1,8 +1,9 @@
 export const factoryForMedia = (media) => {
+
     media.image ? media.image = `./assets/photographers-sample/${media.image}` : null;
     media.video ? media.video = `./assets/photographers-sample/${media.video}` : null;
 
-    const displayPictureDOM = () => {
+    const displayPictureDOM = (media) => {
         const imgHtml = `
                             <article>
                                 <img src="${media.image}" alt="${media.title}" class="photograph-media" id="${media.id}">

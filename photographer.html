@@ -9,62 +9,91 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
 </head>
-<body >
+<body>
 <header>
-    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="FishEye Home Page"/></a>
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/></a>
 </header>
 <main id="main" class="photographerPage">
     <div class="photograph-header">
+        <!--fill in with JS file-->
     </div>
     <section>
         <div class="filter">
-            <span class="filter-text">Trier par</span>
-            <select aria-labelledby="Order by" class="filter-option">
+            <label for="orderBy" class="filter-label">Trier par</label>
+            <div class="filter-option">
+            <select aria-labelledby="Order by"  id="orderBy">
                 <option>Popularité</option>
                 <option>Date</option>
                 <option>Titre</option>
             </select>
+                <p class="filter-text">Popularité</p>
+            <i class="fa-solid fa-chevron-down"></i>
+            </div>
         </div>
         <div class="photograph-gallery">
+            <!--fill in with JS file-->
         </div>
-        <aside class="modalBackground" style="display: none;" aria-hidden="true">
-                <button type="button" class="closeModalButton"> x </button>
-                <div class="navModalButtons">
-                    <button id="previousModalButton" aria-label="Previous picture"> < </button>
-                    <div class="zoomDisplay">
-                        <!--fill in with JS file-->
-                    </div>
-                    <button id="nextModalButton" aria-label="Next picture"> > </button>
-                </div>
-        </aside>
     </section>
 </main>
-<div id="contact_modal">
-    <div class="modal">
+<aside class="modalBackground galleryBackground" style="display: none;" aria-hidden="true"
+       aria-describedby="lightbox to open medias" aria-label="mage closeup view">
+    <button type="button" class="closeModalButton" aria-label="close dialog"> x</button>
+    <div class="navModalButtons" role="dialog">
+        <button id="previousModalButton" aria-label="Previous image"> <</button>
+        <div class="zoomDisplay">
+            <!--fill in with JS file-->
+        </div>
+        <button id="nextModalButton" aria-label="Next image"> ></button>
+    </div>
+</aside>
+<aside id="contact_modal" class="modalBackground contactBackground" style="display: none;" aria-hidden="true"
+       aria-describedby="modal to contact photographer">
+    <div class="contactModal" id="contact-me" role="dialog" aria-label="contact me" >
         <header>
-            <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" alt="close Modal"/>
-        </header>
-        <form>
             <div>
-                <label for="prenom">Prénom</label>
-                <input id="prenom"/>
+                <h2>Contactez-moi</h2>
+                <h2 id="contact_modal-Name"></h2>
             </div>
-            <button class="contact_button">Envoyer</button>
+            <button type="button" aria-label="Close contact form" id="modal_close">
+                <img src="assets/icons/close.svg" alt="cross to close Modal"/>
+            </button>
+        </header>
+        <form id="contact_form">
+            <div>
+                <label for="firstName">Prénom</label>
+                <input id="firstName" type="text" aria-labelledby="First Name"/>
+            </div>
+            <div>
+                <label for="lastName">Nom</label>
+                <input id="lastName" type="text" aria-labelledby="Last Name"/>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" aria-labelledby="Email"/>
+            </div>
+            <div>
+                <label for="message">Votre message</label>
+                <textarea id="message" aria-labelledby="Your message"></textarea>
+            </div>
+            <button class="contact_button" id="contact_modal-submit" aria-label="send">Envoyer</button>
         </form>
     </div>
+</aside>
+<div class="likesBloc">
+
 </div>
 </body>
 <!--main script-->
-<script src="/scripts/pages/photographer.js" type="module"></script>
 <script src="https://kit.fontawesome.com/4c168a5617.js" crossorigin="anonymous"></script>
+<script src="/scripts/pages/photographer.js" type="module"></script>
 <!--utils-->
+<script src="/scripts/utils/contactModal.js" type="module"></script>
 <script src="/scripts/utils/functions.js" type="module"></script>
 <script src="/scripts/utils/urlParser.js" type="module"></script>
-<script src="/scripts/utils/contactForm.js" type="module"></script>
 <script src="/scripts/utils/modalNavigator.js" type="module"></script>
 <!--templates-->
 <script src="/scripts/templates/photographerFactoryForGallery.js" type="module"></script>
-<script src="/scripts/templates/displayPhotographerPresentation.js" type="module" ></script>
+<script src="/scripts/templates/photographerTopPresentation.js" type="module"></script>
 <script src="/scripts/templates/photographerFactoryForModal.js" type="module"></script>
+<script src="/scripts/templates/photographerLikesBloc.js" type="module"></script>
 </html>

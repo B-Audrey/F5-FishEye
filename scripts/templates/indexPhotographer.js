@@ -6,7 +6,7 @@ export const photographerTemplate = (photographer) => {
         const html = `
                             <article >
                             <a href="./photographer.html?id=${photographer.id}">
-                                <img src="${photographer.portrait}" alt="view ${photographer.name} profile">
+                                <img src="${photographer.portrait}" alt="${photographer.name}">
                                 <h2>${photographer.name}</h2>
                             </a>
                             <div class="text">
