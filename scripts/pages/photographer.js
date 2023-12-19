@@ -10,7 +10,6 @@ import {displayPhotographerTopPresentation} from '../templates/photographerTopPr
 import {modalNavigator} from '../utils/modalNavigator.js';
 import {createImgElement} from '../templates/photographerFactoryForModal.js';
 import {displayLikesBloc} from '../templates/photographerLikesBloc.js';
-import {closeContactModal} from '../utils/contactModal.js';
 
 export let imgIndex = 0;
 let filterValue = '';
@@ -58,31 +57,53 @@ const initPhotograph = async () => {
     listenContactModal(currentPhotographer.name);
 
     const likes = document.querySelectorAll('.likesOf');
-    likes.forEach((like) => like.addEventListener(('click'), (e) => {
-            const newMedia = addLike(like);
-            if (!newMedia) {
-                console.error('vous avez déjà liké cette image');
+    likes.forEach((like) => {
+        like.addEventListener('click', (e) => {
+            handleLikeEvent(like);
+        });
+
+        like.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                handleLikeEvent(like);
             }
-            else if (newMedia) {
-                like.innerHTML = `${newMedia.likes} <i class="fa-solid fa-heart" title="heart"></i>`;
-                totalLikes += 1;
-                displayLikesBloc(totalLikes, currentPhotographer.price);
-            }
-        })
-    );
+        });
+    });
+
+    const handleLikeEvent = (like) => {
+        const newMedia = addLike(like);
+        if (!newMedia) {
+            console.error('Vous avez déjà liké cette image');
+        } else if (newMedia) {
+            like.innerHTML = `${newMedia.likes} <i class="fa-solid fa-heart" title="heart"></i>`;
+            totalLikes += 1;
+            displayLikesBloc(totalLikes, currentPhotographer.price);
+        }
+    };
 };
 
 
 //LISTENERS
 
-document.getElementById('orderBy').addEventListener('change', (e) => {
+document.getElementById('orderBy').addEventListener('change', async (e) => {
     const valueToFilter = document.getElementById('orderBy').value;
-    console.log(currentMedias);
-    const sortedMedias = currentMedias.sort( (a, b) => {
-       a(b)
-    })
-    console.log(sortedMedias);
-})
+    if (valueToFilter === 'Date') {
+        currentMedias.sort((a, b) => {
+            return a - b;
+        });
+    }
+    if (valueToFilter === 'Titre') {
+        currentMedias.sort((a, b) => {
+            return a.title.localeCompare(b.title);
+        });
+    }
+    if (valueToFilter === 'Popularité') {
+        currentMedias.sort((a, b) => {
+            return a.likes - b.likes;
+        });
+    }
+    await displayGallery(currentMedias);
+
+});
 
 const addLike = (like) => {
     const likeId = like.className.split(' ')[1];
@@ -102,21 +123,57 @@ document.querySelector('.closeModalButton').addEventListener('click', () => {
 });
 
 document.getElementById('previousModalButton').addEventListener('click', () => {
-    const previous = modalNavigator.goToPreviousIndex();
-    createImgElement(previous);
-});
-document.getElementById('nextModalButton').addEventListener('click', () => {
-    const next = modalNavigator.goToNextIndex();
-    createImgElement(next);
+    navigateModal('previous');
 });
 
-window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' || e.key === 'Esc') {
-        showMediaModal(false);
-        closeContactModal();
+document.getElementById('nextModalButton').addEventListener('click', () => {
+    navigateModal('next');
+});
+
+// Ajouter la navigation au clavier
+document.addEventListener('keydown', (event) => {
+    if (isMediaModalOpen()) {
+        switch (event.key) {
+            case 'ArrowLeft':
+                navigateModal('previous');
+                break;
+            case 'ArrowRight':
+                navigateModal('next');
+                break;
+            case 'Escape':
+                showMediaModal(false);
+                break;
+            default:
+                break;
+        }
     }
 });
+const isMediaModalOpen = () => {
+    const lightBox = document.getElementById('lightBox');
+    return lightBox.ariaHidden === 'false';
+
+};
+
+const navigateModal = (direction) => {
+    let mediaToDisplay;
+
+    if (direction === 'previous') {
+        mediaToDisplay = modalNavigator.goToPreviousIndex();
+    } else if (direction === 'next') {
+        mediaToDisplay = modalNavigator.goToNextIndex();
+    }
+
+    createImgElement(mediaToDisplay);
+};
 
 
 //call at loading page
 initPhotograph();
+// place 1t focus to h1
+document.addEventListener('DOMContentLoaded', () => {
+    // Sélectionnez le titre h1
+    const pageTitle = document.getElementById('logoFishEye"');
+
+    // Mettez le focus sur le titre h1
+    pageTitle.focus();
+});

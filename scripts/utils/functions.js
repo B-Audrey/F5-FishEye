@@ -45,6 +45,7 @@ export const listenContactModal = (name) => {
 }
 
 export const displayGallery = async (medias) => {
+    document.querySelector('.photograph-gallery').innerHTML = "";
     medias.forEach((media) => {
         //creates element with its Dom method
         const mediaModel = factoryForMedia(media);

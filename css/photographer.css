@@ -94,11 +94,18 @@
 }
 
 #orderBy {
-    position: relative;
+    background-color: #901C1C;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: none;
+    padding: 0 1em;
+    box-sizing: border-box;
+    width: 150px;
+    /*position: relative;*/
     height: 50px;
-    width: 170px;
-    opacity: 0;
-    z-index: 10;
+    /*width: 170px;*/
+    /*opacity: 0;*/
+    /*z-index: 10;*/
 }
 
 .filter-text {
@@ -235,7 +242,7 @@ form input {
     padding-left: 0.5em;
 }
 
-#message {
+#yourMessage {
     height: 170px;
     border: none;
     border-radius: 5px;
