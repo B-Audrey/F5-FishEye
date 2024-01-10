@@ -1,0 +1,14 @@
+{
+  "name": "f5-fisheye",
+  "version": "1.0.0",
+  "description": "fisheye website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "B-Audrey",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.53.0"
+  }
+}

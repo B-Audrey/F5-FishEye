@@ -1,5 +1,5 @@
 export const urlParser = () => {
-    const outputParams ={}
+    const outputParams = {}
     const paramsSearcher = new URLSearchParams(window.location.search);
     const paramsEntries = [...paramsSearcher.entries()];
     for(const[key, value] of paramsEntries) {

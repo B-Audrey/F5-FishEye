@@ -81,7 +81,7 @@ export const formValidator = (data) => {
     return isFormValid;
 }
 export const submitForm = (e) => {
-    const textArea = document.getElementById('message');
+    const textArea = document.getElementById('yourMessage');
     const message = {value : textArea.value, type : 'text', id : textArea.id};
     const inputs = [...document.querySelectorAll('#contact_form input'), message];
     const isFormValid = formValidator(inputs);

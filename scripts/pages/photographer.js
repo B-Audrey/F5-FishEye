@@ -6,13 +6,12 @@ import {
     listenContactModal,
     showMediaModal
 } from '../utils/functions.js';
-import {displayPhotographerTopPresentation} from '../templates/photographerTopPresentation.js';
+import {displayPhotographerTopPresentation} from '../templates/photographerHeaderPresentation.js';
 import {modalNavigator} from '../utils/modalNavigator.js';
 import {createImgElement} from '../templates/photographerFactoryForModal.js';
 import {displayLikesBloc} from '../templates/photographerLikesBloc.js';
 
 export let imgIndex = 0;
-let filterValue = '';
 let currentMedias = [];
 let likesVotes = [];
 
@@ -88,7 +87,8 @@ document.getElementById('orderBy').addEventListener('change', async (e) => {
     const valueToFilter = document.getElementById('orderBy').value;
     if (valueToFilter === 'Date') {
         currentMedias.sort((a, b) => {
-            return a - b;
+            // ! typage ! => date : string
+            return a.date.localeCompare(b.date);
         });
     }
     if (valueToFilter === 'Titre') {
@@ -101,6 +101,7 @@ document.getElementById('orderBy').addEventListener('change', async (e) => {
             return a.likes - b.likes;
         });
     }
+    console.log(currentMedias);
     await displayGallery(currentMedias);
 
 });
@@ -171,9 +172,6 @@ const navigateModal = (direction) => {
 initPhotograph();
 // place 1t focus to h1
 document.addEventListener('DOMContentLoaded', () => {
-    // Sélectionnez le titre h1
-    const pageTitle = document.getElementById('logoFishEye"');
-
-    // Mettez le focus sur le titre h1
+    const pageTitle = document.getElementById('logoFishEye');
     pageTitle.focus();
 });
